@@ -1,3 +1,9 @@
+salt (0.14.1.1-1) unstable; urgency=low
+
+  * backport recursive symlink fix in file server
+
+ -- Daniel Miller <millerdev@gmail.com>  Thu, 02 May 2013 16:38:10 -0500
+
 salt (0.14.0-1) unstable; urgency=low
 
   * patch release for ipv6 issues
