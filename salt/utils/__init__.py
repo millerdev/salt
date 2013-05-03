@@ -893,7 +893,7 @@ def rm_rf(path):
     shutil.rmtree(path, onerror=_onerror)
 
 
-def safe_walk(top, topdown=True, onerror=None, followlinks=True, _seen=set()):
+def safe_walk(top, topdown=True, onerror=None, followlinks=True, _seen=None):
     '''
     A clone of the python os.walk function with some checks for recursive
     symlinks. Unlike os.walk this follows symlinks by default.
@@ -919,6 +919,8 @@ def safe_walk(top, topdown=True, onerror=None, followlinks=True, _seen=set()):
         # st_ino is always 0 on some filesystems (FAT, NTFS); ignore them
         if stat.st_ino != 0:
             node = (stat.st_dev, stat.st_ino)
+            if _seen is None:
+                _seen = set()
             if node in _seen:
                 return
             _seen.add(node)
